@@ -1,0 +1,21 @@
+.assets-container {
+  margin-left: 250px;
+  padding: 30px;
+}
+
+.assets-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.assets-table th,
+.assets-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+.assets-table th {
+  background-color: #1f2937;
+  color: white;
+}

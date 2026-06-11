@@ -1,8 +1,10 @@
+import "../styles/navbar.css";
+
 function Navbar() {
   return (
-    <nav>
+    <div className="navbar">
       <h2>Asset Management System</h2>
-    </nav>
+    </div>
   );
 }
 

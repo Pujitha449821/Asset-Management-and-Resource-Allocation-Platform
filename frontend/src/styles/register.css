@@ -1,0 +1,30 @@
+.register-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111827;
+}
+
+.register-card {
+  background: white;
+  width: 400px;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.register-card input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  box-sizing: border-box;
+}
+
+.register-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background: green;
+  color: white;
+  border: none;
+}

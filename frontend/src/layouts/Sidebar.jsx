@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
+import "../styles/sidebar.css";
 
 function Sidebar() {
   return (
-    <div>
-      <h3>Menu</h3>
-
+    <div className="sidebar">
       <ul>
         <li><Link to="/dashboard">Dashboard</Link></li>
         <li><Link to="/assets">Assets</Link></li>

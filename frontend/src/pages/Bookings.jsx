@@ -1,10 +1,37 @@
+import Navbar from "../layouts/Navbar";
+import Sidebar from "../layouts/Sidebar";
+import "../styles/bookings.css";
+
 function Bookings() {
   return (
-    <div>
-      <h1>My Bookings</h1>
+    <>
+      <Navbar />
+      <Sidebar />
 
-      <p>No bookings yet.</p>
-    </div>
+      <div className="bookings-container">
+        <h1>My Bookings</h1>
+
+        <table className="assets-table">
+          <thead>
+            <tr>
+              <th>Booking ID</th>
+              <th>Asset</th>
+              <th>Status</th>
+              <th>Return Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>BK001</td>
+              <td>DSLR Camera</td>
+              <td>Approved</td>
+              <td>15 June 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

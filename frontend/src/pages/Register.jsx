@@ -1,18 +1,19 @@
+import "../styles/register.css";
+
 function Register() {
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="register-page">
+      <div className="register-card">
+        <h1>Register</h1>
 
-      <input type="text" placeholder="Full Name" />
-      <br /><br />
+        <input type="text" placeholder="Full Name" />
 
-      <input type="email" placeholder="Email" />
-      <br /><br />
+        <input type="email" placeholder="Email" />
 
-      <input type="password" placeholder="Password" />
-      <br /><br />
+        <input type="password" placeholder="Password" />
 
-      <button>Register</button>
+        <button>Register</button>
+      </div>
     </div>
   );
 }

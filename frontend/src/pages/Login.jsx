@@ -1,15 +1,17 @@
+import "../styles/login.css";
+
 function Login() {
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Login</h1>
 
-      <input type="email" placeholder="Enter Email" />
-      <br /><br />
+        <input type="email" placeholder="Email" />
 
-      <input type="password" placeholder="Enter Password" />
-      <br /><br />
+        <input type="password" placeholder="Password" />
 
-      <button>Login</button>
+        <button>Login</button>
+      </div>
     </div>
   );
 }
