@@ -6,7 +6,13 @@ function Dashboard() {
     <>
       <Navbar />
       <Sidebar />
-      <h1>Dashboard Page</h1>
+
+      <h1>Dashboard</h1>
+
+      <div>Total Assets: 25</div>
+      <div>Available Assets: 18</div>
+      <div>Active Bookings: 4</div>
+      <div>Pending Requests: 3</div>
     </>
   );
 }

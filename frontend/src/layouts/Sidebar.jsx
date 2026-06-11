@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
+
 function Sidebar() {
   return (
     <div>
+      <h3>Menu</h3>
+
       <ul>
-        <li>Dashboard</li>
-        <li>Assets</li>
-        <li>Bookings</li>
+        <li><Link to="/dashboard">Dashboard</Link></li>
+        <li><Link to="/assets">Assets</Link></li>
+        <li><Link to="/bookings">Bookings</Link></li>
       </ul>
     </div>
   );

@@ -6,7 +6,7 @@ function Assets() {
       <table border="1">
         <thead>
           <tr>
-            <th>Asset Name</th>
+            <th>Asset</th>
             <th>Category</th>
             <th>Quantity</th>
           </tr>
@@ -17,6 +17,12 @@ function Assets() {
             <td>DSLR Camera</td>
             <td>Photography</td>
             <td>5</td>
+          </tr>
+
+          <tr>
+            <td>Speaker</td>
+            <td>Audio</td>
+            <td>10</td>
           </tr>
         </tbody>
       </table>

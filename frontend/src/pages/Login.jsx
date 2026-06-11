@@ -3,12 +3,10 @@ function Login() {
     <div>
       <h1>Login</h1>
 
-      <input type="email" placeholder="Email" />
-
+      <input type="email" placeholder="Enter Email" />
       <br /><br />
 
-      <input type="password" placeholder="Password" />
-
+      <input type="password" placeholder="Enter Password" />
       <br /><br />
 
       <button>Login</button>

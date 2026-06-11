@@ -3,16 +3,13 @@ function Register() {
     <div>
       <h1>Register</h1>
 
-      <input type="text" placeholder="Name" />
-
+      <input type="text" placeholder="Full Name" />
       <br /><br />
 
       <input type="email" placeholder="Email" />
-
       <br /><br />
 
       <input type="password" placeholder="Password" />
-
       <br /><br />
 
       <button>Register</button>
