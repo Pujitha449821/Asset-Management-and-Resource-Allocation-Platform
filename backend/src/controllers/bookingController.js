@@ -152,10 +152,68 @@ const rejectBooking = async (req, res) => {
   }
 };
 
+// Issue Asset
+const issueAsset = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: "Booking not found",
+      });
+    }
+
+    if (booking.status !== "approved") {
+      return res.status(400).json({
+        success: false,
+        message: "Only approved bookings can be issued",
+      });
+    }
+
+    const asset = await Asset.findById(booking.assetId);
+
+    if (!asset) {
+      return res.status(404).json({
+        success: false,
+        message: "Asset not found",
+      });
+    }
+
+    if (asset.availableQuantity < booking.quantity) {
+      return res.status(400).json({
+        success: false,
+        message: "Insufficient asset quantity available",
+      });
+    }
+
+    asset.availableQuantity -= booking.quantity;
+
+    await asset.save();
+
+    booking.status = "issued";
+    booking.issuedAt = new Date();
+
+    await booking.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Asset issued successfully",
+      booking,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createBooking,
   getMyBookings,
   getAllBookings,
   approveBooking,
   rejectBooking,
+  issueAsset,
 };

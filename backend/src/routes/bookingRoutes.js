@@ -7,6 +7,7 @@ const {
   getAllBookings,
   approveBooking,
   rejectBooking,
+  issueAsset,
 } = require("../controllers/bookingController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -46,6 +47,13 @@ router.put(
   authMiddleware,
   authorizeRoles("admin"),
   rejectBooking
+);
+
+router.put(
+  "/:id/issue",
+  authMiddleware,
+  authorizeRoles("admin"),
+  issueAsset
 );
 
 module.exports = router;
