@@ -34,6 +34,25 @@ const addAsset = async (req, res) => {
   }
 };
 
+// Get All Assets
+const getAllAssets = async (req, res) => {
+  try {
+    const assets = await Asset.find();
+
+    res.status(200).json({
+      success: true,
+      count: assets.length,
+      assets,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   addAsset,
+  getAllAssets,
 };
