@@ -192,6 +192,6 @@ http://localhost:5173
 Asset Management and Resource Allocation Platform
 
 Team Members:
-- Bhavana
-- Poojitha
-- Soumithri
+- Bhavana 22323013
+- Poojitha 22323041
+- Soumithri 22323012
