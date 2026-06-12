@@ -96,7 +96,32 @@ const getMostUtilizedAssets = async (req, res) => {
   }
 };
 
+const getOverdueAssets = async (req, res) => {
+  try {
+    const today = new Date();
+
+    const overdueBookings = await Booking.find({
+      status: "issued",
+      endDate: { $lt: today },
+    })
+      .populate("userId", "name email")
+      .populate("assetId", "name category");
+
+    res.status(200).json({
+      success: true,
+      count: overdueBookings.length,
+      overdueAssets: overdueBookings,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   getDashboardSummary,
   getMostUtilizedAssets,
+  getOverdueAssets,
 };
