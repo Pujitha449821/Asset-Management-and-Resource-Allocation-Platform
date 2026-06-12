@@ -5,6 +5,7 @@ const {
   addAsset,
   getAllAssets,
   updateAsset,
+  deleteAsset,
 } = require("../controllers/assetController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -29,6 +30,13 @@ router.put(
   authMiddleware,
   authorizeRoles("admin"),
   updateAsset
+);
+
+router.delete(
+  "/:id",
+  authMiddleware,
+  authorizeRoles("admin"),
+  deleteAsset
 );
 
 module.exports = router;

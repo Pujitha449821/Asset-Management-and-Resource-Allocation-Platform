@@ -84,8 +84,33 @@ const updateAsset = async (req, res) => {
   }
 };
 
+// Delete Asset
+const deleteAsset = async (req, res) => {
+  try {
+    const asset = await Asset.findByIdAndDelete(req.params.id);
+
+    if (!asset) {
+      return res.status(404).json({
+        success: false,
+        message: "Asset not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Asset deleted successfully",
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   addAsset,
   getAllAssets,
   updateAsset,
+  deleteAsset,
 };
