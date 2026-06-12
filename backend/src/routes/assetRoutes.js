@@ -4,6 +4,7 @@ const router = express.Router();
 const {
   addAsset,
   getAllAssets,
+  updateAsset,
 } = require("../controllers/assetController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -21,6 +22,13 @@ router.get(
   "/",
   authMiddleware,
   getAllAssets
+);
+
+router.put(
+  "/:id",
+  authMiddleware,
+  authorizeRoles("admin"),
+  updateAsset
 );
 
 module.exports = router;
