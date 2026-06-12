@@ -69,7 +69,7 @@ The system is designed to improve inventory visibility, reduce scheduling confli
 - Postman / Thunder Client
 
 ## System Architecture
-![Architecture](ArchitectureDiagram.png)
+![Architecture](docs/docs/architecturediagragramsde1.drawio.png)
 
 ## Database Design
 
@@ -100,10 +100,10 @@ The system uses three core collections:
 - returnedAt
 
 ## Entity Relationship Diagram
-![ER Diagram](ERDiagram.png)
+![ER Diagram](docs/ERdiagramsde1.drawio.png)
 
 ## Booking Workflow
-![Workflow](WorkflowDiagram.png)
+![Booking Workflow](docs/docs/Bookingstatusdiag.drawio.png)
 
 ## API Endpoints
 
