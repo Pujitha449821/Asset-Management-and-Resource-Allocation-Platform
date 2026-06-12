@@ -3,6 +3,7 @@ const router = express.Router();
 
 const {
   getDashboardSummary,
+  getMostUtilizedAssets,
 } = require("../controllers/dashboardController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -13,6 +14,13 @@ router.get(
   authMiddleware,
   authorizeRoles("admin"),
   getDashboardSummary
+);
+
+router.get(
+  "/most-utilized-assets",
+  authMiddleware,
+  authorizeRoles("admin"),
+  getMostUtilizedAssets
 );
 
 module.exports = router;

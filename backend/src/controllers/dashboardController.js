@@ -47,6 +47,56 @@ const getDashboardSummary = async (req, res) => {
   }
 };
 
+const getMostUtilizedAssets = async (req, res) => {
+  try {
+    const assets = await Booking.aggregate([
+      {
+        $group: {
+          _id: "$assetId",
+          totalBookings: { $sum: 1 },
+        },
+      },
+      {
+        $sort: {
+          totalBookings: -1,
+        },
+      },
+      {
+        $lookup: {
+          from: "assets",
+          localField: "_id",
+          foreignField: "_id",
+          as: "asset",
+        },
+      },
+      {
+        $unwind: "$asset",
+      },
+      {
+        $project: {
+          _id: 0,
+          assetId: "$asset._id",
+          assetName: "$asset.name",
+          category: "$asset.category",
+          totalBookings: 1,
+        },
+      },
+    ]);
+
+    res.status(200).json({
+      success: true,
+      count: assets.length,
+      assets,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   getDashboardSummary,
+  getMostUtilizedAssets,
 };
