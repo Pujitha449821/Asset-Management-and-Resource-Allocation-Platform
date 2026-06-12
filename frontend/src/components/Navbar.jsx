@@ -12,6 +12,18 @@ function Navbar() {
       {" | "}
 
       <Link to="/assets">Assets</Link>
+
+      {" | "}
+
+      <Link to="/my-bookings">My Bookings</Link>
+
+      {" | "}
+
+      <Link to="/history">History</Link>
+
+      {" | "}
+
+      <Link to="/dashboard">Dashboard</Link>
     </nav>
   );
 }

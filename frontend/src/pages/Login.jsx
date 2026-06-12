@@ -15,19 +15,26 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    try {
-      const res = await API.post("/auth/login", formData);
+  try {
+    const res = await API.post("/auth/login", formData);
 
-      localStorage.setItem("token", res.data.token);
+    console.log("FULL RESPONSE:", res.data);
 
-      alert("Login Successful");
-    } catch (error) {
-      alert("Login Failed");
-      console.error(error);
+    localStorage.setItem("token", res.data.token);
+
+    if (res.data.user) {
+      localStorage.setItem("role", res.data.user.role);
+      console.log("ROLE:", res.data.user.role);
     }
-  };
+
+    alert("Login Successful");
+  } catch (error) {
+    alert("Login Failed");
+    console.error(error);
+  }
+};
 
   return (
     <div>
