@@ -281,6 +281,27 @@ const getBorrowingHistory = async (req, res) => {
   }
 };
 
+// Admin Booking History
+const getBookingHistory = async (req, res) => {
+  try {
+    const history = await Booking.find()
+      .populate("userId", "name email")
+      .populate("assetId", "name category")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: history.length,
+      history,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createBooking,
   getMyBookings,
@@ -290,4 +311,5 @@ module.exports = {
   issueAsset,
   returnAsset,
   getBorrowingHistory,
+  getBookingHistory,
 };
