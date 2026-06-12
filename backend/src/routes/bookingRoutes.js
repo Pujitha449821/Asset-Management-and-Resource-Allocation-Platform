@@ -9,6 +9,7 @@ const {
   rejectBooking,
   issueAsset,
   returnAsset,
+  getBorrowingHistory,
 } = require("../controllers/bookingController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -62,6 +63,12 @@ router.put(
   authMiddleware,
   authorizeRoles("admin"),
   returnAsset
+);
+
+router.get(
+  "/history",
+  authMiddleware,
+  getBorrowingHistory
 );
 
 module.exports = router;
