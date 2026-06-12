@@ -6,6 +6,7 @@ const {
   getMyBookings,
   getAllBookings,
   approveBooking,
+  rejectBooking,
 } = require("../controllers/bookingController");
 
 const authMiddleware = require("../middleware/authMiddleware");
@@ -38,6 +39,13 @@ router.put(
   authMiddleware,
   authorizeRoles("admin"),
   approveBooking
+);
+
+router.put(
+  "/:id/reject",
+  authMiddleware,
+  authorizeRoles("admin"),
+  rejectBooking
 );
 
 module.exports = router;
