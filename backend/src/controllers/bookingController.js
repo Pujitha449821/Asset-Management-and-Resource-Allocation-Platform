@@ -209,6 +209,56 @@ const issueAsset = async (req, res) => {
   }
 };
 
+// Return Asset
+const returnAsset = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        message: "Booking not found",
+      });
+    }
+
+    if (booking.status !== "issued") {
+      return res.status(400).json({
+        success: false,
+        message: "Only issued assets can be returned",
+      });
+    }
+
+    const asset = await Asset.findById(booking.assetId);
+
+    if (!asset) {
+      return res.status(404).json({
+        success: false,
+        message: "Asset not found",
+      });
+    }
+
+    asset.availableQuantity += booking.quantity;
+
+    await asset.save();
+
+    booking.status = "returned";
+    booking.returnedAt = new Date();
+
+    await booking.save();
+
+    res.status(200).json({
+      success: true,
+      message: "Asset returned successfully",
+      booking,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   createBooking,
   getMyBookings,
@@ -216,4 +266,5 @@ module.exports = {
   approveBooking,
   rejectBooking,
   issueAsset,
+  returnAsset,
 };
